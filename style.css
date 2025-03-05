@@ -54,11 +54,7 @@ body{
   z-index: 10;
   
 }
-.wrapper:hover .item{
 
-
-
-}
 @keyframes scrollLeft {
   to {
     left: -200px;
