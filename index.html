@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jasku :)</title>
+
+    <style>
+        *,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+
+       
+
+
+.parallax {
+  transform: translateY(0);
+  transition: transform 0.1s ease-in-out;
+}
+
+.wrapper {
+      position: fixed;
+      top: 50%; 
+    
+      margin-left: auto;
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+      width: 120%;
+      max-width: 1920px;
+      height: 100px;
+      overflow: hidden;
+      mask-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 1) 20%,
+        rgba(0, 0, 0, 1) 80%,
+        rgba(159, 132, 132, 0)
+  );
+  z-index: 10;
+}
+.wrapper:hover .item{
+animation-play-state:paused;
+
+}
+
+@keyframes scrollLeft {
+  to {
+    left: -200px;
+  }
+}
+
+.item {
+    mix-blend-mode: difference;
+  white-space: nowrap;
+  color: red;
+  mix-blend-mode: difference;
+  position: absolute;
+  left: max(calc(200px * 8), 100%);
+  animation-name: scrollLeft;
+  animation-duration: 30s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: large;
+  font-weight: 900;
+  font-size: 7vh;
+
+}
+
+.item1 {
+  animation-delay: calc(30s / 5 * (5 - 1) * -1);
+}
+
+.item2 {
+  animation-delay: calc(30s / 5 * (5 - 2) * -1);
+}
+
+.item3 {
+  animation-delay: calc(30s / 5 * (5 - 3) * -1);
+}
+
+.item4 {
+  animation-delay: calc(30s / 5 * (5 - 4) * -1);
+}
+
+.item5 {
+  animation-delay: calc(30s / 5 * (5 - 5) * -1);
+}
+
+.item6 {
+  animation-delay: calc(30s / 5 * (5 - 6) * -1);
+}
+
+.item7 {
+  animation-delay: calc(30s / 5 * (5 - 7) * -1);
+}
+
+.item8 {
+  animation-delay: calc(30s / 5 * (5 - 8) * -1);
+}
+
+
+
+
+
+/*prosta opcja, jesli nic nie zadziala
+img{
+  width:30%;
+  margin: auto;
+  display: flex;
+}*/
+
+
+.container img {
+  width: 40vh;
+  max-height: 49vh;
+  max-width: 40vh;
+  object-fit: cover;
+  
+  will-change: transform;
+}
+
+.container {
+  display: flex;
+  gap: 2vh;
+  flex-wrap: wrap;
+  justify-content: center;  
+  align-items: center;
+}
+
+.menu-bar{
+  display: flex;
+  position: absolute;
+  text-align: center;
+  justify-content: space-evenly;
+  gap: auto;
+  position:sticky;
+  width: 100%;
+  top:0;
+  left:0;
+  
+  z-index:1000;
+  
+
+}
+.menu-bar a {
+  font-family: Arial, Helvetica, sans-serif;
+
+  color: red; 
+  text-decoration: none; 
+  padding: 10px 20px; 
+  display: inline-block; 
+}
+.menu-bar a:hover {
+  background-color: white; 
+}
+
+    </style>
+</head>
+<body>
+  
+  <div class="menu-bar">
+    <a href="https://www.instagram.com/jaskushii/">instagram</a>
+    <a href="#">presave keep until the sunlight</a>
+    <a href="https://open.spotify.com/artist/32Outb7Q3w7dRQUhUqpvpl?si=Wkp9QfafTOWeVIXwnl08QA">spotify</a>
+    <a href="https://music.apple.com/us/artist/jasq/1074322201">apple music</a>
+    
+    
+  </div>
+
+    <div class="wrapper" class="mouse_move">
+        
+        <p class="item item1">-keep-</p>
+        <p class="item item2">-until-</p>
+        <p class="item item3">--the--</p>
+        <p class="item item4">sunlight</p>
+        <p class="item item5">presave</p>
+      </div>
+
+
+      <div class="container">
+            <img src="1.jpg" class="image" data-speed="0.2" class="parallax" style="height: 40vh;">
+            <img src="2.jpg" class="image" data-speed="0.4" class="parallax" >
+            <img src="3.jpg" class="image" data-speed="0.2" class="parallax"  style="height: 30vh;">   
+            <img src="4.jpg" class="image" data-speed="0.1" class="parallax" >
+            <img src="5.jpg" class="image" data-speed="0.6" class="parallax"  style="height: 50vh;">
+            <img src="6.jpg" class="image" data-speed="0.4" class="parallax"  style="height: 40vh;">
+            <img src="7.jpg" class="image" data-speed="0.5" class="parallax" >
+            <img src="8.jpg" class="image" data-speed="0.2" class="parallax" >
+      </div>
+      
+      
+      <script>
+       
+        document.addEventListener('mousemove', function(event) {
+          const images = document.querySelectorAll('.container img');
+          const mouseX = event.clientX; 
+          const mouseY = event.clientY;
+          const centerX = window.innerWidth / 2; 
+          const centerY = window.innerHeight / 2; 
+          
+          images.forEach((img, index) => {
+           
+            const offsetX = (mouseX - centerX) / centerX;
+            const offsetY = (mouseY - centerY) / centerY; 
+            
+            
+            const movementX = offsetX * 10 * (index + 1);
+            const movementY = offsetY * 10 * (index + 1);
+            
+            
+            img.style.transform = `translate(${movementX}px, ${movementY}px)`;
+          });
+        });
+      </script>
+      
+</body>
+</html>
