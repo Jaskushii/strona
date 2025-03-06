@@ -16,26 +16,16 @@ html {
   
 }
 body{
-  
-}
-
-
-
-.parallax {
-  transform: translateY(0);
-  transition: transform 0.1s ease-in-out;
-}
-
-@media screen and (min-width: 769px) {
-  .parallax {
-    transform: none;
-    transition: none;
-  }
+  overflow-x: hidden;
 }
 
 
 
 
+
+
+
+/*SEKCJA NAPISU NA SRODKU*/
 
 .wrapper {
       position: fixed;
@@ -57,7 +47,6 @@ body{
   );
   z-index: 10;
 
-  
 }
 
 
@@ -132,8 +121,17 @@ img{
   display: flex;
 }*/
 
+/*PARALAKSA*/
 
-.container img {
+.parallax {
+  transform: translateY(0);
+
+}
+
+
+/*ZDJECIA I MODUŁY*/
+
+.container .element {
   width: 40vh;
   max-height: 49vh;
   max-width: 40vh;
@@ -141,6 +139,30 @@ img{
   box-shadow: 0px 0px 10px rgb(178, 178, 178);
   will-change: transform;
   border-radius: 5px;
+  overflow-x: clip;
+  
+}
+
+.container div{
+  display:flex;
+  position:relative;
+  z-index: 15;
+  background: rgba(134, 134, 134, 0.24);
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(150, 150, 150, 0.476);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  width: fit-content;
+  height: fit-content;
+}
+
+.element p{
+  margin: 0;
+  width: 100%;
+  
+  display:contents;
+
+  max-width: 40vh;
 }
 
 .container {
@@ -152,10 +174,14 @@ img{
   
 }
 
+
+/*MENU BAR*/
+
 .menu-bar{
   /*display: flex;*/
-  position:sticky;
 
+  position:sticky;
+  display: flex;
   text-align: center;
   justify-content: center;
   gap: auto;
@@ -163,18 +189,16 @@ img{
   width: 100%;
   top:0;
   left:0;
-  height: 7vh;
+  height: 10vh;
   align-items: center;
-  display: flex;
-
   
-  z-index:1000;
+  z-index:10;
   
 
 }
 .menu-bar a {
   font-family: Arial, Helvetica, sans-serif;
-
+  position:relative;
   color: red; 
   text-decoration: none; 
   padding: 10px 20px; 
@@ -185,6 +209,9 @@ img{
 }
 
 
+
+
+
 .menu-bar a:hover {
   background: rgba(255, 255, 255, 0.24);
 border-radius: 10px;
@@ -192,11 +219,14 @@ box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 backdrop-filter: blur(2px);
 -webkit-backdrop-filter: blur(2px);
 opacity: 1;
+color: rgb(185, 0, 0);
 
 
 }
 
 
+
+/*EPK, NOT USED*/
 
 .epk{
   display: block;
@@ -213,8 +243,22 @@ backdrop-filter: blur(7px);
   
 }
 
+.epk div{
+  width: 40vh;
+  max-height: 49vh;
+  max-width: 40vh;
+  object-fit: cover;
+  box-shadow: 0px 0px 10px rgb(178, 178, 178);
+  will-change: transform;
+  border-radius: 5px;
+}
 
 
+/*STOPA*/
+
+
+/*
+stara stopa
 footer{
   display: block;
   position: relative;
@@ -224,16 +268,17 @@ footer{
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
   z-index: 1001;
-  width: fit-content;
+  width: 100%;
   margin: auto;
   background: rgba(255, 255, 255, 0.24);
-  border-radius: 10px;
+
   box-shadow: 0 4px 30px rgba(150, 150, 150, 0.476);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   
 }
 
+*/
 
 
 footer p{
@@ -249,16 +294,38 @@ footer a{
 }
 
 footer a:hover{
-  color:black;
+  color:rgb(130, 0, 0);
 
 }
 
-.epk div{
-  width: 40vh;
-  max-height: 49vh;
-  max-width: 40vh;
-  object-fit: cover;
-  box-shadow: 0px 0px 10px rgb(178, 178, 178);
-  will-change: transform;
-  border-radius: 5px;
+footer {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  width: 100%;
+  height: 10vh; 
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative; 
+  z-index: 100; 
+  background-color: white; 
+  box-shadow: 0px 0px 10px rgb(229, 229, 229);
 }
+#left, #right {
+  padding: 2vh;
+  width: 50%;
+}
+#left {
+  text-align: left;
+}
+#right {
+  text-align: right;
+}
+
+.spacer{
+  width: 100%;
+}
+
+
+
+
+

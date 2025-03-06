@@ -12,27 +12,23 @@
 </head>
 <script>
        
-  document.addEventListener('mousemove', function(event) {
-    const images = document.querySelectorAll('.container img');
+       document.addEventListener('mousemove', function(event) {
+    const elements = document.querySelectorAll('.container .element'); 
     const mouseX = event.clientX; 
     const mouseY = event.clientY;
     const centerX = window.innerWidth / 2; 
     const centerY = window.innerHeight / 2; 
     
-    images.forEach((img, index) => {
-     
-      const offsetX = (mouseX - centerX) / centerX;
-      const offsetY = (mouseY - centerY) / centerY; 
-      
-      
-      const movementX = offsetX * 10 * (index + 1);
-      const movementY = offsetY * 10 * (index + 1);
-      
-      
-      img.style.transform = `translate(${movementX}px, ${movementY}px)`;
+    elements.forEach((element, index) => {
+        const offsetX = (mouseX - centerX) / centerX;
+        const offsetY = (mouseY - centerY) / centerY; 
+        
+        const movementX = offsetX * 10 * (index + 1);
+        const movementY = offsetY * 10 * (index + 1);
+        
+        element.style.transform = `translate(${movementX}px, ${movementY}px)`;
     });
-  });
-
+});
 
 
 /*
@@ -55,14 +51,14 @@
   
   <div class="menu-bar">
     <a href="https://www.instagram.com/jaskushii/">instagram</a>
-    <a href="#">presave keep until the sunlight</a>
+    <a href="https://mugo.lnk.to/keepuntilthesunlight">presave keep until the sunlight</a>
     <a href="https://open.spotify.com/artist/32Outb7Q3w7dRQUhUqpvpl?si=Wkp9QfafTOWeVIXwnl08QA">spotify</a>
     <a href="https://music.apple.com/us/artist/jasq/1074322201">apple music</a>
     
     
   </div>
 <div id="gora">
-    <div class="wrapper" class="mouse_move">
+    <div class="wrapper mouse_move">
         
         <p class="item item1">-keep-</p>
         <p class="item item2">-until-</p>
@@ -73,14 +69,21 @@
 
 
       <div class="container">
-            <img src="1.jpg" class="image" data-speed="0.2" class="parallax" style="height: 40vh;">
-            <img src="2.jpg" class="image" data-speed="0.4" class="parallax" >
-            <img src="3.jpg" class="image" data-speed="0.2" class="parallax"  style="height: 30vh;">   
-            <img src="4.jpg" class="image" data-speed="0.1" class="parallax" >
-            <img src="5.jpg" class="image" data-speed="0.6" class="parallax"  style="height: 50vh;">
-            <img src="6.jpg" class="image" data-speed="0.4" class="parallax"  style="height: 40vh;">
-            <img src="7.jpg" class="image" data-speed="0.5" class="parallax" >
-            <img src="8.jpg" class="image" data-speed="0.2" class="parallax" >
+            <img src="1.jpg" class="element parallax" data-speed="0.2" style="height: 40vh;">
+            <img src="2.jpg" class="element parallax" data-speed="0.4">
+            <!-- jakbym chcial wstawic jakis tekst jako blok taki jak img
+            <div class="element module parallax" data-speed="0.2" style="height: 45vh;">
+            </div>
+            -->
+            <img src="3.jpg" class="element parallax" data-speed="0.2" style="height: 30vh;">   
+            <img src="4.jpg" class="element parallax" data-speed="0.1">
+            <img src="5.jpg" class="element parallax" data-speed="0.6" style="height: 50vh;">
+            <img src="6.jpg" class="element parallax" data-speed="0.4" style="height: 40vh;">
+            <img src="7.jpg" class="element parallax" data-speed="0.5">
+            <img src="8.jpg" class="element parallax" data-speed="0.2">
+
+
+            
       </div>
 
 </div>     
@@ -98,12 +101,20 @@
         
       </div>
       -->
-      
+      <div class="spacer" style="height: 5vh;">
+
+      </div>
       <footer>
-        <p>Made by Myself</p>
-        <p>&copy; 2025 Jaskushii. All rights reserved.</p>
-        <a href="mailto:jasqmusic.business@gmail.com?subject=Question&body=Hey, ...">contact me via email</a>
-      </footer>
+        <div id="left">
+          <p>Made by Myself</p>
+          <p>&copy; 2025 Jaskushii. All rights reserved.</p>
+          
+        
+        </div>
+        <div id="right">
+          <a href="mailto:jasqmusic.business@gmail.com?subject=Question&body=Hey, ...">contact me via email</a>
+        </div>
+        </footer>
       
 </body>
 </html>
