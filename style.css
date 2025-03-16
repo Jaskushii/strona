@@ -141,7 +141,7 @@ img{
   will-change: transform;
   border-radius: 5px;
   overflow-x: clip;
-  
+  transition: 0.1s;
 }
 
 .container div{
@@ -155,6 +155,7 @@ img{
   -webkit-backdrop-filter: blur(10px);
   width: fit-content;
   height: fit-content;
+  
 }
 
 .element p{
@@ -193,12 +194,12 @@ img{
   height: 10vh;
   align-items: center;
   
-  z-index:10;
+  z-index:20;
   
 
 }
 .menu-bar a {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif; 
   position:relative;
   color: red; 
   text-decoration: none; 
@@ -335,7 +336,25 @@ footer {
   width: 100%;
 }
 
+/*
+.okladka{
+  transition: 2s;
+}
+.okladka:hover{
 
+  filter:grayscale(100%);
+  
+}
+*/
 
+.okladka{
+  z-index: 15;
+  transition:6s;
+
+}
+.okladka:hover{
+  -webkit-filter: saturate(0%);
+
+}
 
 
