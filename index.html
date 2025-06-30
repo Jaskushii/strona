@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>jasku :)</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
 
+    <style>
+        
+    </style>
 </head>
 <script>
        
@@ -31,6 +31,8 @@
 });
 
 
+
+
 /*
   window.addEventListener("scroll", function() {
   let scrollTop = window.scrollY;
@@ -44,17 +46,21 @@
 */
 
 
+
+
+
 </script>
 
 
 <body>
+
   
   <div class="menu-bar">
     <a href="https://www.instagram.com/jaskushii/">instagram</a>
-    <a href="https://open.spotify.com/track/3lssQpCKKiO7Yy4aqQEHZQ?si=bfb14185890341a5">listen to "all the places"</a>
+    <a href="https://mugo.lnk.to/alltheplaces">listen to "all the places"</a>
     <a href="https://open.spotify.com/artist/32Outb7Q3w7dRQUhUqpvpl?si=Wkp9QfafTOWeVIXwnl08QA">spotify</a>
     <a href="https://music.apple.com/us/artist/jasq/1074322201">apple music</a>
-    <a href="https://soundcloud.com/jaskushii">soundcloud</a>
+    
     
   </div>
 
@@ -73,19 +79,21 @@
 
 
       <div class="container">
-    <a href="https://mugo.lnk.to/keepuntilthesunlight" style="z-index: 15;">
-      <img src="./assets/1.jpg" class="element parallax okladka" data-speed="0.5">
-    </a>
-    <img src="./assets/4.jpg" class="element parallax" data-speed="0.1">
-    <img src="./assets/5.jpg" class="element parallax" data-speed="0.6" style="height: 50vh;">
-    <img src="./assets/8.jpg" class="element parallax" data-speed="0.2">
-    <img src="./assets/3.jpg" class="element parallax" data-speed="0.2"> 
-    <img src="./assets/gif1.gif" class="element parallax" data-speed="0.2">  
-    <img src="./assets/gif2.gif" class="element parallax" data-speed="0.2">  
+            
+            <a href="https://open.spotify.com/track/3lssQpCKKiO7Yy4aqQEHZQ?si=673ce3be70d7410d"  style="z-index: 15;"><img src="./assets/1.jpg" class="element parallax okladka" data-speed="0.4"></a>
+            <!-- jakbym chcial wstawic jakis tekst jako blok taki jak img
+            <div class="element module parallax" data-speed="0.2" style="height: 45vh;">
+            </div>
+            -->
+            <img src="./assets/3.jpg" class="element parallax" data-speed="0.2" style="height: 30vh;">   
+            <img src="./assets/4.jpg" class="element parallax" data-speed="0.1">
+            <img src="./assets/5.jpg" class="element parallax" data-speed="0.6" style="height: 50vh;">
+            <a href="https://mugo.lnk.to/keepuntilthesunlight"  style="z-index: 15;"><img src="./assets/keep-until-the-sunlight.jpg" class="element parallax okladka" data-speed="0.5"></a>
+            <img src="./assets/8.jpg" class="element parallax" data-speed="0.2">
+            <img src="./assets/gif1.gif" class="element parallax" data-speed="0.2">
+            
 
-  </div>
-
-  <script>
+            <script>
     window.addEventListener("DOMContentLoaded", () => {
       const container = document.querySelector(".container");
       const elements = Array.from(container.children);
@@ -98,6 +106,7 @@
       shuffled.forEach(el => container.appendChild(el));
     });
   </script>
+      </div>
 
 </div>     
       
