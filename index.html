@@ -10,6 +10,7 @@
         
     </style>
 </head>
+<!--
 <script>
        
        document.addEventListener('mousemove', function(event) {
@@ -50,14 +51,68 @@
 
 
 </script>
-
+-->
 
 <body>
+<div class="grain"></div>
+      <div class="bloom"></div>
+      <!--The circle thing https://codepen.io/gusevdigital/pen/MWxyXRa-->
+  <div class="circle"></div>
+<!--skrypt koleczka-->
+<script>
+ console.clear();
+
+const circleElement = document.querySelector('.circle');
+
+const mouse = { x: 0, y: 0 };
+const circle = { x: 0, y: 0 };
+let hasMoved = false;
+
+// ukryte do pierwszego ruchu
+circleElement.style.opacity = 0;
+
+window.addEventListener('mousemove', (e) => {
+  mouse.x = e.x;
+  mouse.y = e.y;
+
+  if (!hasMoved) {
+    hasMoved = true;
+    circleElement.style.opacity = 1; // pokazanie po pierwszym ruchu
+  }
+});
+
+const speed = 0.15;
+
+// HOVER EFFECT na linki
+document.querySelectorAll('a').forEach(a => {
+  a.addEventListener('mouseenter', () => {
+    circleElement.classList.add('hovering-link');
+  });
+
+  a.addEventListener('mouseleave', () => {
+    circleElement.classList.remove('hovering-link');
+  });
+});
+
+const tick = () => {
+  circle.x += (mouse.x - circle.x) * speed;
+  circle.y += (mouse.y - circle.y) * speed;
+
+  circleElement.style.transform =
+    `translate(${circle.x}px, ${circle.y}px)`;
+
+  requestAnimationFrame(tick);
+};
+
+tick();
+
+</script>
 
   
+  
   <div class="menu-bar">
-    <a href="https://www.patreon.com/posts/instagram-arp-132362280?utm_medium=clipboard_copy&utm_source=copyLink&utm_campaign=postshare_creator&utm_content=join_link">arp tutorial free download</a>
-    <a href="https://mugo.lnk.to/getbacktogether">presave "get back together"</a>
+    <a href="https://www.instagram.com/jaskushii/">instagram</a>
+    <a href="https://soundcloud.com/jaskushii">soundcloud</a>
     <a href="https://open.spotify.com/artist/32Outb7Q3w7dRQUhUqpvpl?si=Wkp9QfafTOWeVIXwnl08QA">spotify</a>
     <a href="https://music.apple.com/us/artist/jasq/1074322201">apple music</a>
     
@@ -71,21 +126,23 @@
 <div id="gora">
     <div class="wrapper mouse_move">
         
-        <p class="item item1">get</p>
-        <p class="item item2">back</p>
-        <p class="item item3">together</p>
-        <p class="item item4">presave</p>
-        <p class="item item5">now</p>
+        <p class="item item1">please</p>
+        <p class="item item2">wait :)</p>
+        <p class="item item3">please</p>
+        <p class="item item4">wait :)</p>
+        <p class="item item5">please</p>
+        <p class="item item6">wait :)</p>
+        
       </div>
-
-
+<!--WSZYSTKO-->
+<!--
       <div class="container">
             
             <a href="https://open.spotify.com/track/3lssQpCKKiO7Yy4aqQEHZQ?si=673ce3be70d7410d"  style="z-index: 15;"><img src="./assets/1.jpg" class="element parallax okladka" data-speed="0.4"></a>
-            <!-- jakbym chcial wstawic jakis tekst jako blok taki jak img
+             jakbym chcial wstawic jakis tekst jako blok taki jak img
             <div class="element module parallax" data-speed="0.2" style="height: 45vh;">
             </div>
-            -->
+            
             <img src="./assets/3.jpg" class="element parallax" data-speed="0.2" style="height: 30vh;">   
             <img src="./assets/4.jpg" class="element parallax" data-speed="0.1">
             <img src="./assets/5.jpg" class="element parallax" data-speed="0.6" style="height: 50vh;">
@@ -109,7 +166,7 @@
     });
   </script>
       </div>
-
+    -->
 </div>     
       
       <!--
@@ -130,7 +187,7 @@
       </div>
       <footer>
         <div id="left">
-          <p>Made by Myself</p>
+          
           <p>&copy; 2025 Jaskushii. All rights reserved.</p>
           
         
@@ -140,5 +197,12 @@
         </div>
         </footer>
       
+      
+      
+      <script>
+
+      </script>
+</div>
+
 </body>
 </html>

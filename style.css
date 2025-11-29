@@ -10,15 +10,114 @@
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer */
+  
 }
+/* Firefox  */
+@-moz-document url-prefix() {
+  .bloom {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+
+    /* symulacja brightness(1.2) */
+    background: rgba(255, 255, 255, 0.15) !important;
+  }
+}
+
+
+
 html {
   scroll-behavior: smooth;
   
 }
 body{
   overflow-x: hidden;
+  background-color: #ff5323;
+  /*
+  KOLORY
+  Zielony fajny: 
+
+
+  */
 }
 
+.bloom {
+  position: fixed;
+    inset: 0;
+    z-index: 500; /* poniżej grain, powyżej tła */
+    pointer-events: none;
+
+    
+    
+backdrop-filter: blur(0.6px) brightness(1.2);
+    background: rgba(255, 255, 255, 0.05); 
+}
+
+
+.circle {
+
+  --circle-size: 35px;
+  position: fixed;
+  height: var(--circle-size);
+  width: var(--circle-size);
+  border: 2.5px solid black;
+  border-radius: 100%;
+  top: calc(var(--circle-size) / 2 * -1);
+  left: calc(var(--circle-size) / 2 * -1);
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.3s;
+
+  
+}
+@media (hover: none) and (pointer: coarse) {
+  .cursor-follow {
+    display: none !important;
+  }
+  
+}
+
+
+.grain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
+
+    z-index: 9999; /* może być mega wysokie */
+    pointer-events: none; /* najważniejsze */
+}
+
+.grain::before {
+    content: "";
+    position: fixed;
+    top: -10rem;
+    left: -10rem;
+    width: calc(100% + 20rem);
+    height: calc(100% + 20rem);
+
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/5/5c/Image_gaussian_noise_example.png);
+    opacity: 0.15;
+
+    animation: noise 1s steps(2) infinite;
+    pointer-events: none; /* też ważne */
+}
+
+/* ANIMACJA */
+@keyframes noise {
+    0%   { transform: translate3d(0, 9rem, 0); }
+    10%  { transform: translate3d(-1rem, -4rem, 0); }
+    20%  { transform: translate3d(-8rem, 2rem, 0); }
+    30%  { transform: translate3d(9rem, -9rem, 0); }
+    40%  { transform: translate3d(-2rem, 7rem, 0); }
+    50%  { transform: translate3d(-9rem, -4rem, 0); }
+    60%  { transform: translate3d(2rem, 6rem, 0); }
+    70%  { transform: translate3d(7rem, -8rem, 0); }
+    80%  { transform: translate3d(-9rem, 1rem, 0); }
+    90%  { transform: translate3d(6rem, -5rem, 0); }
+    100% { transform: translate3d(-7rem, 0, 0); }
+}
 
 
 
@@ -62,7 +161,7 @@ body{
   overflow-x: hidden;
   mix-blend-mode: difference;
   white-space: nowrap;
-  color: red;
+  color: black;
   mix-blend-mode: difference;
   position: absolute;
   left: max(calc(200px * 8), 100%);
@@ -70,44 +169,45 @@ body{
   animation-duration: 30s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: sans-serif;
   font-size: large;
-  font-weight: 900;
+  font-weight: bold;
   font-size: 7vh;
   max-width: 70%;
-  
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
-
+/*jakbym chcial zmienic ilosc napisow to to 6 zmienic na ta liczbe ok?*/
 .item1 {
-  animation-delay: calc(30s / 5 * (5 - 1) * -1);
+  animation-delay: calc(30s / 6 * (6 - 1) * -1);
 }
 
 .item2 {
-  animation-delay: calc(30s / 5 * (5 - 2) * -1);
+  animation-delay: calc(30s / 6 * (6 - 2) * -1);
 }
 
 .item3 {
-  animation-delay: calc(30s / 5 * (5 - 3) * -1);
+  animation-delay: calc(30s / 6 * (6 - 3) * -1);
 }
 
 .item4 {
-  animation-delay: calc(30s / 5 * (5 - 4) * -1);
+  animation-delay: calc(30s / 6 * (6 - 4) * -1);
 }
 
 .item5 {
-  animation-delay: calc(30s / 5 * (5 - 5) * -1);
+  animation-delay: calc(30s / 6 * (6 - 5) * -1);
 }
 
 .item6 {
-  animation-delay: calc(30s / 5 * (5 - 6) * -1);
+  animation-delay: calc(30s / 6 * (6 - 6) * -1);
 }
 
 .item7 {
-  animation-delay: calc(30s / 5 * (5 - 7) * -1);
+  animation-delay: calc(30s / 6 * (6 - 7) * -1);
 }
 
 .item8 {
-  animation-delay: calc(30s / 5 * (5 - 8) * -1);
+  animation-delay: calc(30s / 6 * (6 - 8) * -1);
 }
 
 
@@ -121,15 +221,15 @@ img{
   display: flex;
 }*/
 
-/*PARALAKSA*/
+/*PARALAKSA
 
 .parallax {
   transform: translateY(0);
 
 }
+*/
 
-
-/*ZDJECIA I MODUŁY*/
+/*ZDJECIA I MODUŁY
 
 .container .element {
   width: 40vh;
@@ -175,7 +275,7 @@ img{
   align-items: center;
   
 }
-
+*/
 
 /*MENU BAR*/
 
@@ -201,7 +301,7 @@ img{
 .menu-bar a {
   font-family: Arial, Helvetica, sans-serif; 
   position:relative;
-  color: red; 
+  color: black; 
   text-decoration: none; 
   padding: 10px 20px; 
   display: inline-block; 
@@ -224,27 +324,27 @@ img{
 
 
 .menu-bar a:hover {
-  background: rgba(198, 198, 198, 0.24);
+  /*background: rgba(255, 255, 255, 0.24);*/
 border-radius: 10px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(2px);
--webkit-backdrop-filter: blur(2px);
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+/*backdrop-filter: blur(2px);*/
+/*-webkit-backdrop-filter: blur(2px);*/
 opacity: 1;
-color: rgb(185, 0, 0);
+color: rgb(0, 0, 0);
 
 
 }
 
 
 
-/*EPK, NOT USED*/
+/*EPK, NOT USED
 
 .epk{
   display: block;
   position:relative;
   width: 100%;
   height: 1000px;
-  /*background-color: #daeeff;*/
+  background-color: #daeeff;
   background: rgba(255, 255, 255, 0.24);
 
 box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -263,7 +363,7 @@ backdrop-filter: blur(7px);
   will-change: transform;
   border-radius: 5px;
 }
-
+*/
 
 /*STOPA*/
 
@@ -299,13 +399,13 @@ footer p{
 footer a{
   font-family: Arial, Helvetica, sans-serif;
 
-  color: red; 
+  color: rgb(0, 0, 0); 
   text-decoration: none; 
   transition: 0.5s ease-in-out;
 }
 
 footer a:hover{
-  color:rgb(130, 0, 0);
+  color:rgb(39, 39, 39);
 
 }
 
@@ -318,8 +418,12 @@ footer {
   font-family: Arial, Helvetica, sans-serif;
   position: relative; 
   z-index: 100; 
-  background-color: white; 
-  box-shadow: inset 0px 0px 10px rgb(229, 229, 229);
+  position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+  
 }
 #left, #right {
   padding: 2vh;
@@ -352,9 +456,10 @@ footer {
   transition:6s;
 
 }
+/*
 .okladka:hover{
   -webkit-filter: saturate(0%);
 
 }
-
+*/
 
