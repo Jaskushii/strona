@@ -3,200 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>jasku :)</title>
-
+    <!-- Import Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    
     <style>
-        
+        *, *::before, *::after { box-sizing: border-box; }
+        * { margin: 0; user-select: none; -webkit-user-select: none; }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+                url("dsn.jpeg") no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow: hidden;
+            font-family: 'Inter', -apple-system, sans-serif;
+        }
+
+        /* GRAIN - SZYBKI */
+        .grain {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 9999; pointer-events: none;
+        }
+        .grain::before {
+            content: ""; position: fixed; top: -10rem; left: -10rem;
+            width: calc(100% + 20rem); height: calc(100% + 20rem);
+            background-image: url(https://upload.wikimedia.org/wikipedia/commons/5/5c/Image_gaussian_noise_example.png);
+            opacity: 0.15; animation: noise 1s steps(2) infinite; pointer-events: none;
+        }
+        @keyframes noise {
+            0%   { transform: translate3d(0, 9rem, 0); }
+            10%  { transform: translate3d(-1rem, -4rem, 0); }
+            20%  { transform: translate3d(-8rem, 2rem, 0); }
+            30%  { transform: translate3d(9rem, -9rem, 0); }
+            40%  { transform: translate3d(-2rem, 7rem, 0); }
+            50%  { transform: translate3d(-9rem, -4rem, 0); }
+            60%  { transform: translate3d(2rem, 6rem, 0); }
+            70%  { transform: translate3d(7rem, -8rem, 0); }
+            80%  { transform: translate3d(-9rem, 1rem, 0); }
+            90%  { transform: translate3d(6rem, -5rem, 0); }
+            100% { transform: translate3d(-7rem, 0, 0); }
+        }
+
+        .bloom {
+            position: fixed; inset: 0; z-index: 500; pointer-events: none;
+            backdrop-filter: blur(0.7px) brightness(1.1);
+        }
+
+        /* GŁÓWNY NAPIS MARQUEE - OPTYMALNY ROZMIAR */
+        .marquee-wrapper {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            overflow: hidden;
+            z-index: 5;
+            pointer-events: none;
+            display: flex;
+        }
+
+        .marquee-content {
+            display: flex;
+            white-space: nowrap;
+            animation: scrollMarquee 25s linear infinite;
+        }
+
+        .marquee-content p {
+            font-size: 11vh; /* Zmniejszone z 18vh - teraz jest w sam raz */
+            font-weight: 500;
+            color: #bababa;
+            text-transform: uppercase;
+            padding-right: 150px;
+            letter-spacing: -3px;
+        }
+
+        @keyframes scrollMarquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* OKŁADKA */
+        .cover-outer {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: flex; justify-content: center; align-items: center;
+            perspective: 1500px;
+            z-index: 10;
+        }
+
+        .cover-inner {
+            width: 600px;
+            height: 600px;
+            max-width: 75vw;
+            max-height: 75vw;
+            transition: transform 0.2s ease-out;
+            transform-style: preserve-3d;
+        }
+
+        .cover-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 6%; 
+            box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+        }
+
+        /* MENU BAR */
+        .menu-bar {
+            position: fixed; top: 0; width: 100%; text-align: center;
+            padding: 4vh 10px; z-index: 100;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .menu-bar a {
+            color: #bababa;
+            text-decoration: none;
+            padding: 10px 20px;
+            transition: 0.4s;
+            font-size: 17px; /* Zmniejszone z 24px - elegancka wielkość */
+            font-weight: 500;
+            white-space: nowrap;
+            text-transform: lowercase;
+            letter-spacing: -0.2px;
+        }
+        .menu-bar a:hover { color: white; }
+
+        /* STOPKA */
+        footer {
+            position: fixed; bottom: 0; width: 100%; display: flex;
+            justify-content: space-between; padding: 25px; z-index: 100;
+            color: #bababa; font-size: 13px; /* Zmniejszone z 18px */
+            font-weight: 400;
+        }
+        footer a { color: #bababa; text-decoration: none; }
+        footer a:hover { color: white; }
+
+        /* KURSOR */
+        .circle {
+            --circle-size: 30px;
+            position: fixed; height: var(--circle-size); width: var(--circle-size);
+            border: 2px solid #ffffff; border-radius: 100%;
+            top: calc(var(--circle-size) / 2 * -1); left: calc(var(--circle-size) / 2 * -1);
+            pointer-events: none; z-index: 1000; opacity: 0;
+        }
+
+        @media (max-width: 768px) {
+            .circle { display: none !important; }
+            .marquee-content p { font-size: 7vh; padding-right: 80px; }
+            .menu-bar a { font-size: 15px; padding: 10px 12px; }
+        }
     </style>
 </head>
-<!--
-<script>
-       
-       document.addEventListener('mousemove', function(event) {
-    const elements = document.querySelectorAll('.container .element'); 
-    const mouseX = event.clientX; 
-    const mouseY = event.clientY;
-    const centerX = window.innerWidth / 2; 
-    const centerY = window.innerHeight / 2; 
-    
-    elements.forEach((element, index) => {
-        const offsetX = (mouseX - centerX) / centerX;
-        const offsetY = (mouseY - centerY) / centerY; 
-        
-        const movementX = offsetX * 10 * (index + 1);
-        const movementY = offsetY * 10 * (index + 1);
-        
-        element.style.transform = `translate(${movementX}px, ${movementY}px)`;
-    });
-});
-
-
-
-
-/*
-  window.addEventListener("scroll", function() {
-  let scrollTop = window.scrollY;
-  let fadeDiv = document.querySelector(".wrapper");
-  let fadeStart = 400; // Piksele, po których zaczyna zanikać
-  let fadeEnd = 500; // Piksele, po których znika całkowicie
-
-  let opacity = 1 - (scrollTop - fadeStart) / (fadeEnd - fadeStart);
-  fadeDiv.style.opacity = Math.max(opacity, 0); // Zapewnia, że opacity nie spadnie poniżej 0
-});
-*/
-
-
-
-
-
-</script>
--->
-
 <body>
+
 <div class="grain"></div>
-      <div class="bloom"></div>
-      <!--The circle thing https://codepen.io/gusevdigital/pen/MWxyXRa-->
-  <div class="circle"></div>
-<!--skrypt koleczka-->
-<script>
- console.clear();
+<div class="bloom"></div>
+<div class="circle"></div>
 
-const circleElement = document.querySelector('.circle');
-
-const mouse = { x: 0, y: 0 };
-const circle = { x: 0, y: 0 };
-let hasMoved = false;
-
-// ukryte do pierwszego ruchu
-circleElement.style.opacity = 0;
-
-window.addEventListener('mousemove', (e) => {
-  mouse.x = e.x;
-  mouse.y = e.y;
-
-  if (!hasMoved) {
-    hasMoved = true;
-    circleElement.style.opacity = 1; // pokazanie po pierwszym ruchu
-  }
-});
-
-const speed = 0.15;
-
-// HOVER EFFECT na linki
-document.querySelectorAll('a').forEach(a => {
-  a.addEventListener('mouseenter', () => {
-    circleElement.classList.add('hovering-link');
-  });
-
-  a.addEventListener('mouseleave', () => {
-    circleElement.classList.remove('hovering-link');
-  });
-});
-
-const tick = () => {
-  circle.x += (mouse.x - circle.x) * speed;
-  circle.y += (mouse.y - circle.y) * speed;
-
-  circleElement.style.transform =
-    `translate(${circle.x}px, ${circle.y}px)`;
-
-  requestAnimationFrame(tick);
-};
-
-tick();
-
-</script>
-
-  
-  
-  <div class="menu-bar">
+<nav class="menu-bar">
     <a href="https://www.instagram.com/jaskushii/">instagram</a>
     <a href="https://soundcloud.com/jaskushii">soundcloud</a>
     <a href="https://open.spotify.com/artist/32Outb7Q3w7dRQUhUqpvpl?si=Wkp9QfafTOWeVIXwnl08QA">spotify</a>
-    <a href="https://music.apple.com/us/artist/jasq/1074322201">apple music</a>
-    
-    
-    
-  </div>
+    <a href="https://music.apple.com/us/artist/jasq/1074322201" style="white-space: nowrap;">apple music</a>
+</nav>
 
-  <div class="spacer" id="pod-menu-bar">
-
-  </div>
-<div id="gora">
-    <div class="wrapper mouse_move">
-        
-        <p class="item item1">please</p>
-        <p class="item item2">waitㅤ:)</p>
-        <p class="item item3">please</p>
-        <p class="item item4">waitㅤ:)</p>
-        <p class="item item5">please</p>
-        <p class="item item6">waitㅤ:)</p>
-        
-      </div>
-<!--WSZYSTKO-->
-<!--
-      <div class="container">
-            
-            <a href="https://open.spotify.com/track/3lssQpCKKiO7Yy4aqQEHZQ?si=673ce3be70d7410d"  style="z-index: 15;"><img src="./assets/1.jpg" class="element parallax okladka" data-speed="0.4"></a>
-             jakbym chcial wstawic jakis tekst jako blok taki jak img
-            <div class="element module parallax" data-speed="0.2" style="height: 45vh;">
-            </div>
-            
-            <img src="./assets/3.jpg" class="element parallax" data-speed="0.2" style="height: 30vh;">   
-            <img src="./assets/4.jpg" class="element parallax" data-speed="0.1">
-            <img src="./assets/5.jpg" class="element parallax" data-speed="0.6" style="height: 50vh;">
-            <a href="https://mugo.lnk.to/keepuntilthesunlight"  style="z-index: 15;"><img src="./assets/keep-until-the-sunlight.jpg" class="element parallax okladka" data-speed="0.5"></a>
-            <img src="./assets/8.jpg" class="element parallax" data-speed="0.2">
-            <img src="./assets/gif1.gif" class="element parallax" data-speed="0.2">
-            <a href="https://mugo.lnk.to/getbacktogether"  style="z-index: 15;"><img src="./assets/gbt.jpg" class="element parallax okladka" data-speed="0.5"></a>
-            
-
-            <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      const container = document.querySelector(".container");
-      const elements = Array.from(container.children);
-      const shuffled = elements
-        .map(value => ({ value, sort: Math.random() }))
-        .sort((a, b) => a.sort - b.sort)
-        .map(({ value }) => value);
-
-      container.innerHTML = "";
-      shuffled.forEach(el => container.appendChild(el));
-    });
-  </script>
-      </div>
-    -->
-</div>     
-      
-      <!--
-        <div class="epk">
-        <div id="Biography">
-          <h1>Biography</h1>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem debitis voluptate eius earum aperiam! Itaque, excepturi aperiam ducimus doloribus dolorum voluptatem, magnam provident officiis, natus repellendus animi voluptas dolorem. Excepturi!</p>
-        </div>
-        <div id="contact">
-          <h1>Biography</h1>
-          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem debitis voluptate eius earum aperiam! Itaque, excepturi aperiam ducimus doloribus dolorum voluptatem, magnam provident officiis, natus repellendus animi voluptas dolorem. Excepturi!</p>
-        </div>
-        
-      </div>
-      -->
-      <div class="spacer" style="height: 5vh;">
-
-      </div>
-      <footer>
-        <div id="left">
-          
-          <p>&copy; 2025 Jaskushii. All rights reserved.</p>
-          
-        
-        </div>
-        <div id="right">
-          <a href="mailto:jasqmusic.business@gmail.com?subject=Question&body=Hey, ...">contact me via email</a>
-        </div>
-        </footer>
+<div class="marquee-wrapper">
+    <div class="marquee-content">
+        <p>PRESAVE DON'T STOP NOW!</p>
+        <p>PRESAVE DON'T STOP NOW!</p>
+        <p>PRESAVE DON'T STOP NOW!</p>
+        <p>PRESAVE DON'T STOP NOW!</p>
+    </div>
+    <div class="marquee-content">
+        <p>PRESAVE DON'T STOP NOW!</p>
+        <p>PRESAVE DON'T STOP NOW!</p>
+        <p>PRESAVE DON'T STOP NOW!</p>
+        <p>PRESAVE DON'T STOP NOW!</p>
+    </div>
 </div>
+
+<div class="cover-outer">
+    <div class="cover-inner" id="tilt-card">
+        <a href="https://ncs.lnk.to/dontstopnow">
+            <img src="dsn_ncs.jpeg" alt="Cover">
+        </a>
+    </div>
+</div>
+
+<footer>
+    <div id="left"><p>&copy; 2025 Jaskushii.</p></div>
+    <div id="right"><a href="mailto:jasqmusic.business@gmail.com">contact me</a></div>
+</footer>
+
+<script>
+    const tiltCard = document.getElementById('tilt-card');
+    const circleElement = document.querySelector('.circle');
+    let mouseX = 0, mouseY = 0;
+    let circleX = 0, circleY = 0;
+
+    window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        
+        if (window.innerWidth > 768) {
+            circleElement.style.opacity = 1;
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            const moveX = (mouseX - centerX) / centerX;
+            const moveY = (mouseY - centerY) / centerY;
+            tiltCard.style.transform = `rotateY(${moveX * 12}deg) rotateX(${moveY * -12}deg)`;
+        }
+    });
+
+    const tick = () => {
+        if (window.innerWidth > 768) {
+            circleX += (mouseX - circleX) * 0.15;
+            circleY += (mouseY - circleY) * 0.15;
+            circleElement.style.transform = `translate(${circleX}px, ${circleY}px)`;
+        }
+        requestAnimationFrame(tick);
+    };
+    tick();
+
+    if (window.DeviceOrientationEvent) {
+        window.addEventListener('deviceorientation', (e) => {
+            if (window.innerWidth <= 768) {
+                const rotX = Math.max(Math.min(e.beta, 30), -30) / 2;
+                const rotY = Math.max(Math.min(e.gamma, 30), -30) / 2;
+                tiltCard.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+            }
+        });
+    }
+</script>
 
 </body>
 </html>

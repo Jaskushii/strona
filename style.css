@@ -27,18 +27,20 @@
 
 html {
   scroll-behavior: smooth;
-  
+  height: 100%;
 }
 body{
-  overflow-x: hidden;
-  background-color: #006B3C;
-
+  height: 100%;
+  margin: 0;
+  background: url("dsn.jpeg") no-repeat;
+  background-size: 100% 100%;
   /*
   KOLORY
   Zielony fajny: 
 #006B3C
 
   */
+
 }
 
 .bloom {
