@@ -4,166 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>jasku :)</title>
-    <!-- Import Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
-    
-    <style>
-        *, *::before, *::after { box-sizing: border-box; }
-        * { margin: 0; user-select: none; -webkit-user-select: none; }
-
-        html, body {
-            height: 100%;
-            margin: 0;
-            background: 
-                linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
-                url("dsn.jpeg") no-repeat;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            overflow: hidden;
-            font-family: 'Inter', -apple-system, sans-serif;
-        }
-
-        /* GRAIN - SZYBKI */
-        .grain {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 9999; pointer-events: none;
-        }
-        .grain::before {
-            content: ""; position: fixed; top: -10rem; left: -10rem;
-            width: calc(100% + 20rem); height: calc(100% + 20rem);
-            background-image: url(https://upload.wikimedia.org/wikipedia/commons/5/5c/Image_gaussian_noise_example.png);
-            opacity: 0.15; animation: noise 1s steps(2) infinite; pointer-events: none;
-        }
-        @keyframes noise {
-            0%   { transform: translate3d(0, 9rem, 0); }
-            10%  { transform: translate3d(-1rem, -4rem, 0); }
-            20%  { transform: translate3d(-8rem, 2rem, 0); }
-            30%  { transform: translate3d(9rem, -9rem, 0); }
-            40%  { transform: translate3d(-2rem, 7rem, 0); }
-            50%  { transform: translate3d(-9rem, -4rem, 0); }
-            60%  { transform: translate3d(2rem, 6rem, 0); }
-            70%  { transform: translate3d(7rem, -8rem, 0); }
-            80%  { transform: translate3d(-9rem, 1rem, 0); }
-            90%  { transform: translate3d(6rem, -5rem, 0); }
-            100% { transform: translate3d(-7rem, 0, 0); }
-        }
-
-        .bloom {
-            position: fixed; inset: 0; z-index: 500; pointer-events: none;
-            backdrop-filter: blur(0.7px) brightness(1.1);
-        }
-
-        /* GŁÓWNY NAPIS MARQUEE - OPTYMALNY ROZMIAR */
-        .marquee-wrapper {
-            position: fixed;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 100%;
-            overflow: hidden;
-            z-index: 5;
-            pointer-events: none;
-            display: flex;
-        }
-
-        .marquee-content {
-            display: flex;
-            white-space: nowrap;
-            animation: scrollMarquee 25s linear infinite;
-        }
-
-        .marquee-content p {
-            font-size: 11vh; /* Zmniejszone z 18vh - teraz jest w sam raz */
-            font-weight: 500;
-            color: #bababa;
-            text-transform: uppercase;
-            padding-right: 150px;
-            letter-spacing: -3px;
-        }
-
-        @keyframes scrollMarquee {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
-        }
-
-        /* OKŁADKA */
-        .cover-outer {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            display: flex; justify-content: center; align-items: center;
-            perspective: 1500px;
-            z-index: 10;
-        }
-
-        .cover-inner {
-            width: 600px;
-            height: 600px;
-            max-width: 75vw;
-            max-height: 75vw;
-            transition: transform 0.2s ease-out;
-            transform-style: preserve-3d;
-        }
-
-        .cover-inner img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 6%; 
-            box-shadow: 0 40px 100px rgba(0,0,0,0.5);
-        }
-
-        /* MENU BAR */
-        .menu-bar {
-            position: fixed; top: 0; width: 100%; text-align: center;
-            padding: 4vh 10px; z-index: 100;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .menu-bar a {
-            color: #bababa;
-            text-decoration: none;
-            padding: 10px 20px;
-            transition: 0.4s;
-            font-size: 17px; /* Zmniejszone z 24px - elegancka wielkość */
-            font-weight: 500;
-            white-space: nowrap;
-            text-transform: lowercase;
-            letter-spacing: -0.2px;
-        }
-        .menu-bar a:hover { color: white; }
-
-        /* STOPKA */
-        footer {
-            position: fixed; bottom: 0; width: 100%; display: flex;
-            justify-content: space-between; padding: 25px; z-index: 100;
-            color: #bababa; font-size: 13px; /* Zmniejszone z 18px */
-            font-weight: 400;
-        }
-        footer a { color: #bababa; text-decoration: none; }
-        footer a:hover { color: white; }
-
-        /* KURSOR */
-        .circle {
-            --circle-size: 30px;
-            position: fixed; height: var(--circle-size); width: var(--circle-size);
-            border: 2px solid #ffffff; border-radius: 100%;
-            top: calc(var(--circle-size) / 2 * -1); left: calc(var(--circle-size) / 2 * -1);
-            pointer-events: none; z-index: 1000; opacity: 0;
-        }
-
-        @media (max-width: 768px) {
-            .circle { display: none !important; }
-            .marquee-content p { font-size: 7vh; padding-right: 80px; }
-            .menu-bar a { font-size: 15px; padding: 10px 12px; }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<video id="bgVideo" autoplay loop muted playsinline class="bg-video">
+    <source src="ikylistrona.mp4" type="video/mp4">
+</video>
 
 <div class="grain"></div>
 <div class="bloom"></div>
@@ -178,41 +28,66 @@
 
 <div class="marquee-wrapper">
     <div class="marquee-content">
-        <p>PRESAVE DON'T STOP NOW!</p>
-        <p>PRESAVE DON'T STOP NOW!</p>
-        <p>PRESAVE DON'T STOP NOW!</p>
-        <p>PRESAVE DON'T STOP NOW!</p>
+        <p>PRESAVE</p>
+        <p>PRESAVE</p>
+        <p>PRESAVE</p>
+        <p>PRESAVE</p>
     </div>
     <div class="marquee-content">
-        <p>PRESAVE DON'T STOP NOW!</p>
-        <p>PRESAVE DON'T STOP NOW!</p>
-        <p>PRESAVE DON'T STOP NOW!</p>
-        <p>PRESAVE DON'T STOP NOW!</p>
+        <p>PRESAVE</p>
+        <p>PRESAVE</p>
+        <p>PRESAVE</p>
+        <p>PRESAVE</p>
     </div>
 </div>
 
 <div class="cover-outer">
     <div class="cover-inner" id="tilt-card">
-        <a href="https://ncs.lnk.to/dontstopnow">
-            <img src="dsn_ncs.jpeg" alt="Cover">
+        <a href="https://sndo.ffm.to/ya0dr97">
+            <img src="pngi know you like artwork.jpeg" alt="Cover">
         </a>
     </div>
 </div>
 
+<!-- KONTROLER GŁOŚNOŚCI -->
+<div class="audio-control" id="audioControl">
+    <button id="muteBtn" class="mute-btn">
+        <svg id="icon-muted" viewBox="0 0 24 24">
+            <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+        </svg>
+        <svg id="icon-unmuted" viewBox="0 0 24 24" style="display: none;">
+            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+        </svg>
+    </button>
+    <!-- Zmieniona wartość startowa value="0.2" -->
+    <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.01" value="0.2">
+</div>
+
 <footer>
-    <div id="left"><p>&copy; 2025 Jaskushii.</p></div>
-    <div id="right"><a href="mailto:jasqmusic.business@gmail.com">contact me</a></div>
+    <div id="left"><p>&copy; 2026 Jaskushii.</p></div>
+    <div id="right"><a href="mailto:contact@jaskushii.com">contact me</a></div>
 </footer>
 
 <script>
+    // --- PARALAKSA I NOWY KURSOR ---
     const tiltCard = document.getElementById('tilt-card');
     const circleElement = document.querySelector('.circle');
+    
     let mouseX = 0, mouseY = 0;
     let circleX = 0, circleY = 0;
+    let targetScale = 1;
+    let currentScale = 1;
+    let firstMove = true;
 
     window.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
+        
+        if (firstMove) {
+            circleX = mouseX;
+            circleY = mouseY;
+            firstMove = false;
+        }
         
         if (window.innerWidth > 768) {
             circleElement.style.opacity = 1;
@@ -225,24 +100,84 @@
     });
 
     const tick = () => {
-        if (window.innerWidth > 768) {
-            circleX += (mouseX - circleX) * 0.15;
-            circleY += (mouseY - circleY) * 0.15;
-            circleElement.style.transform = `translate(${circleX}px, ${circleY}px)`;
+        if (window.innerWidth > 768 && !firstMove) {
+            circleX += (mouseX - circleX) * 0.4;
+            circleY += (mouseY - circleY) * 0.4;
+            currentScale += (targetScale - currentScale) * 0.2; // Płynne powiększanie
+            
+            circleElement.style.transform = `translate(${circleX}px, ${circleY}px) scale(${currentScale})`;
         }
         requestAnimationFrame(tick);
     };
     tick();
 
-    if (window.DeviceOrientationEvent) {
-        window.addEventListener('deviceorientation', (e) => {
-            if (window.innerWidth <= 768) {
-                const rotX = Math.max(Math.min(e.beta, 30), -30) / 2;
-                const rotY = Math.max(Math.min(e.gamma, 30), -30) / 2;
-                tiltCard.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg)`;
-            }
+    // Dodanie logiki Hover dla wszystkich linków, przycisków i suwaków
+    const interactables = document.querySelectorAll('a, button, input');
+    interactables.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            circleElement.classList.add('hovered');
+            targetScale = 1.4; // Powiększa się o 40% na hoverze
         });
-    }
+        el.addEventListener('mouseleave', () => {
+            circleElement.classList.remove('hovered');
+            targetScale = 1; // Wraca do standardowej wielkości
+        });
+    });
+
+
+    // --- ODTWARZACZ WIDEO I GŁOŚNOŚĆ ---
+    const video = document.getElementById('bgVideo');
+    const muteBtn = document.getElementById('muteBtn');
+    const volumeSlider = document.getElementById('volumeSlider');
+    const iconMuted = document.getElementById('icon-muted');
+    const iconUnmuted = document.getElementById('icon-unmuted');
+    const audioControl = document.getElementById('audioControl');
+
+    // Startowa głośność 20%
+    const defaultVol = 0.2;
+    volumeSlider.value = defaultVol;
+    volumeSlider.style.background = `linear-gradient(to right, white ${defaultVol * 100}%, rgba(255,255,255,0.2) ${defaultVol * 100}%)`;
+
+    muteBtn.addEventListener('click', () => {
+        if (video.muted) {
+            video.muted = false;
+            
+            // Jeśli ktoś wyciszył do zera suwakiem i znowu wciśnie unmute, ustaw na 20%
+            if (parseFloat(volumeSlider.value) === 0) {
+                volumeSlider.value = defaultVol;
+                volumeSlider.style.background = `linear-gradient(to right, white ${defaultVol * 100}%, rgba(255,255,255,0.2) ${defaultVol * 100}%)`;
+            }
+            video.volume = volumeSlider.value;
+            
+            iconMuted.style.display = 'none';
+            iconUnmuted.style.display = 'block';
+            audioControl.classList.add('is-unmuted');
+        } else {
+            video.muted = true;
+            iconMuted.style.display = 'block';
+            iconUnmuted.style.display = 'none';
+            audioControl.classList.remove('is-unmuted');
+        }
+    });
+
+    volumeSlider.addEventListener('input', (e) => {
+        const val = parseFloat(e.target.value);
+        video.volume = val;
+        
+        e.target.style.background = `linear-gradient(to right, white ${val * 100}%, rgba(255,255,255,0.2) ${val * 100}%)`;
+
+        if (val === 0) {
+            video.muted = true;
+            audioControl.classList.remove('is-unmuted');
+            iconMuted.style.display = 'block';
+            iconUnmuted.style.display = 'none';
+        } else {
+            video.muted = false;
+            audioControl.classList.add('is-unmuted');
+            iconMuted.style.display = 'none';
+            iconUnmuted.style.display = 'block';
+        }
+    });
 </script>
 
 </body>
